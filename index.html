@@ -5,16 +5,27 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>TODO</title>
+    <!-- style -->
+    <link rel="stylesheet" href="style.css">
    
 </head>
 <body>
-    <div id="app">
+    <div id="app" v-clock>
         <h1>TODO LIST</h1>
+
         <ul>
-            <li v-for="items in list">
-                <div>{{ items.text }}</div>
+            <!-- ciclo todo items -->
+            <li v-for="item in list">
+                <div>{{ item.text }}</div>
+                 <div>{{ item.done }}</div> 
             </li>
         </ul>  
+        <!-- aggiungere todo items -->
+        <form @submit.prevent="addItem">
+            <label for="item">Hai altre cose da fare?</label>
+            <input type="text" id="item" v-model="newItem">
+            <button type="submit">Aggiungi</button>
+        </form>
     </div>
     <!-- vue -->
     <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
